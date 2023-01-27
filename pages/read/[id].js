@@ -1,9 +1,11 @@
 import { useRouter } from "next/router"
+import axios from 'axios';
+import { Article } from "@/components/Article";
 export async function getServerSideProps(context){
-  return {props:{}}
+  const result = await axios.get('http://localhost:9999/topics/'+context.params.id);
+  return {props:{topic:result.data}}
 }
-export default function Read(){
+export default function Read({topic}){
   const route = useRouter();
-  console.log("🚀 ~ file: [id].js:5 ~ Read ~ route", route.asPath, route.query)
-  return <h1>Read</h1>
+  return <Article title={topic.title}>{topic.body}</Article>
 }
