@@ -7,14 +7,16 @@ function Header({title}){
   </header>
 }
 function Nav(){
+  const topics = [
+    {id:1, title:"About", body:"About Payletter"},
+    {id:2, title:"History", body:"History of Payletter"},
+  ];
+  const lis = topics.map((e)=><li key={e.id}>
+    <Link href={`/read/${e.id}`}>{e.title}</Link>
+  </li>);
   return <nav>
     <ul>
-      <li>
-        <Link href="/read/1">About</Link>
-      </li>
-      <li>
-        <Link href="/read/2">History</Link>
-      </li>
+      {lis}
     </ul>
   </nav>
 }
