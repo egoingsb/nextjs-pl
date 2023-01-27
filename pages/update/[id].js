@@ -1,5 +1,10 @@
 import {Article} from "@/components/Article";
-export default function Update({ article }) {
+import axios from 'axios';
+export async function getServerSideProps(context){
+  const result = await axios.get('http://localhost:9999/topics/'+context.params.id);
+  return {props:{topic:result.data}}
+}
+export default function Update({topic}) {
   return <Article title="Update">
     <form onSubmit={async (evt)=>{
       evt.preventDefault();
@@ -9,10 +14,10 @@ export default function Update({ article }) {
       route.push(`/read/${result.data.id}`);
     }}>
       <p>
-        <input type="text" name="title" placeholder="제목" />
+        <input type="text" name="title" placeholder="제목" value={topic.title}/>
       </p>
       <p>
-        <textarea name="body" placeholder="본문"></textarea>
+        <textarea name="body" placeholder="본문" value={topic.body}></textarea>
       </p>
       <p>
         <input type="submit" value="Create" />
