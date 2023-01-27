@@ -1,8 +1,8 @@
 import Link from "next/link";
-function Header(){
+function Header({title}){
   return <header>
     <h1>
-      <Link href="/">Payletter</Link>
+      <Link href="/">{title}</Link>
     </h1>
   </header>
 }
@@ -18,18 +18,21 @@ function Nav(){
     </ul>
   </nav>
 }
-function Article(){
+function Article({title, children}){
   return <article>
-    <h2>Welcome</h2>
-    Hello.
+    <h2>{title}</h2>
+    {children}
   </article>
+}
+function Welcome(){
+  return <Article title="Welcome">Hello.</Article>
 }
 export default function Home() {
   return (
     <>
-      <Header></Header>
+      <Header title="Payletter"></Header>
       <Nav></Nav>
-      <Article></Article>
+      <Welcome></Welcome>
     </>
   )
 }
