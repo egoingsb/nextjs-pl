@@ -1,7 +1,9 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 export function Nav() {
+  const router = useRouter();
   const [topics, setTopics] = useState([]);
   async function init(){
     const resp = await fetch('http://localhost:9999/topics');
@@ -9,8 +11,8 @@ export function Nav() {
     setTopics(result);
   }
   useEffect(()=>{
-    init();
-  },[]);
+    init(); 
+  },[router.asPath]);
   const lis = topics.map((e) => <li key={e.id}>
     <Link href={`/read/${e.id}`}>{e.title}</Link>
   </li>);
