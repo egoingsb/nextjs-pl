@@ -10,6 +10,9 @@
     "server": "npx json-server --watch --port 9999 db.json"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/material": "^5.11.6",
     "@next/font": "13.1.5",
     "axios": "^1.2.5",
     "eslint": "8.32.0",
