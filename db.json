@@ -1,11 +1,5 @@
 {
-  "topics": [
-    {
-      "id": 1,
-      "title": "json-server-2",
-      "body": "typicode"
-    }
-  ],
+  "topics": [],
   "comments": [
     {
       "id": 1,
