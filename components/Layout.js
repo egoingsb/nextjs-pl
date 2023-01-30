@@ -23,7 +23,7 @@ export default function Layout({children}){
       <Grid item md={9} xs={12}>
         {children}
         <Stack direction="row" spacing={1}>
-          <Button variant="outlined" component={Link} href="/create">Create</Button>
+          <Button color="success" variant="outlined" component={Link} href="/create">Create</Button>
           {contextUI}
         </Stack>
       </Grid>
