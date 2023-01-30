@@ -2,14 +2,16 @@ import { Header } from "./Header";
 import { Nav } from "./Nav";
 import Link from 'next/link';
 import { useRouter } from "next/router";
-import { Container, Grid } from "@mui/material";
+import { Container, Grid, Stack } from "@mui/material";
+import Button from '@mui/material/Button';
 
 export default function Layout({children}){
   const router = useRouter();
   let contextUI = null;
   if(router.query.id){
     contextUI = <>
-      <Link href={`/update/${router.query.id}`}>Update</Link>
+      <Button component={Link} variant="outlined" href={`/update/${router.query.id}`}>Update</Button>
+      <Button variant="outlined">Delete</Button>
     </>
   }
   return <Container maxWidth="md">
@@ -20,8 +22,10 @@ export default function Layout({children}){
       </Grid>
       <Grid item md={9} xs={12}>
         {children}
-        <Link href="/create">Create</Link>
-        {contextUI}
+        <Stack direction="row" spacing={1}>
+          <Button variant="outlined" component={Link} href="/create">Create</Button>
+          {contextUI}
+        </Stack>
       </Grid>
     </Grid>
   </Container>
